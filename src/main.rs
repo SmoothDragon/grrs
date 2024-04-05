@@ -13,8 +13,7 @@ struct Cli{
 fn main() {
     let args = Cli::parse();
     
-    let reader = BufReader::new(std::fs::File::open(args.path).expect("open failed"));
-    let result = reader
+    let result = BufReader::new(std::fs::File::open(args.path).expect("open failed"))
         .lines()
         .flatten()
         .filter(|s| s.contains(&args.pattern))
